@@ -26,16 +26,30 @@ public class SpringJpaApplication {
 		 * userRepository.save(user2);
 		 */
 		
-		Optional<User> optional = userRepository.findById(100);
-		User user3 = optional.get();
-		user3.setCity("Lucknow");
-		userRepository.save(user3);
+		/*
+		 * Optional<User> optional = userRepository.findById(100); User user3 =
+		 * optional.get(); user3.setCity("Lucknow"); userRepository.save(user3);
+		 */
 		
-		List<User> findByName = userRepository.findByName("Motahharul Haque");
-		findByName.forEach(user -> System.out.println(user));
+		/*
+		 * List<User> findByName = userRepository.findByName("Motahharul Haque");
+		 * findByName.forEach(user -> System.out.println(user));
+		 * 
+		 * List<User> findByNameAndCity =
+		 * userRepository.findByNameAndCity("Abhishek","Patna");
+		 * findByNameAndCity.forEach(user -> System.out.println(user));
+		 * 
+		 * List<User> findByOrderByName = userRepository.findByOrderByName();
+		 * findByOrderByName.forEach(user -> System.out.println(user));
+		 */
 		
-		List<User> findByNameAndCity = userRepository.findByNameAndCity("Abhishek","Patna");
-		findByNameAndCity.forEach(user -> System.out.println(user));
+		List<User> list = userRepository.getAllUser();
+		list.forEach(user -> System.out.println(user));
+		List<User> userByName = userRepository.getUserByName("Motahharul Haque");
+		userByName.forEach(user -> System.out.println(user));
+		
+		List<User> getUserByNameAndCity = userRepository.getUserByNameAndCity("Motahharul Haque","Darbhanga");
+		getUserByNameAndCity.forEach(user -> System.out.println(user));
 	}
 
 }
